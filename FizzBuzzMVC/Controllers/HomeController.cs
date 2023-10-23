@@ -17,20 +17,35 @@ namespace FizzBuzzMVC.Controllers
         {
             return View();
         }
-
+        [HttpGet]
         public IActionResult FBPage()
         {
-            return View();
-        }
-        public IActionResult Privacy()
-        {
-            return View();
+            FizzBuzz model = new();
+
+            model.FizzValue = 3;
+            model.BuzzValue = 5;
+
+
+            return View(model);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult FBPage(FizzBuzz fizzbuzz)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
+
         }
+        
+    public IActionResult Privacy()
+    {
+        return View();
     }
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+}
 }
