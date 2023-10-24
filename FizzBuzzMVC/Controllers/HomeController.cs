@@ -56,7 +56,12 @@ namespace FizzBuzzMVC.Controllers
                 {
                     fbitems.Add("Buzz");
                 }
+                else
+                {
+                    fbitems.Add(i.ToString());
+                }
             }
+            fizzbuzz.Result = fbitems;
 
             return View(fizzbuzz);
 
